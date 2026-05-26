@@ -3,13 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/nikhil-official358/cicd-.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 echo 'Building application...'
@@ -25,6 +18,12 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh 'docker build -t myapp .'
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh 'docker run --rm myapp'
             }
         }
 
