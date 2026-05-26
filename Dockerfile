@@ -1,2 +1,7 @@
-FROM nginx:latest 
-COPY . /usr/share/nginx/html
+FROM python:3.11
+
+WORKDIR /app
+
+COPY . .
+
+CMD ["python3", "app.py"]
